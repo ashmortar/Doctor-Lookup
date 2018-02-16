@@ -7,13 +7,17 @@ describe('DoctorFinder', function() {
   testFinder.setLatLongWithZip(97204);
   let nameTestArray;
   let symptomTestArray;
+  let specialtyTestArray;
   let errorNameTest;
   let errorSymptomTest;
   setTimeout(function() {
     nameTestArray = testFinder.findByName("david smith");
-  }, 1000);
+  }, 100);
   setTimeout(function() {
     symptomTestArray = testFinder.findBySymptom("abdominal pain");
+  }, 1000);
+  setTimeout(function() {
+    specialtyTestArray = testFinder.getSpecialties();
   }, 2000);
   // setTimeout(function() {
   //   errorNameTest = testFinder.findByName("&*)980(*^&)");
@@ -27,6 +31,7 @@ describe('DoctorFinder', function() {
       done();
     }, 1000);
   });
+
   afterEach(function() {});
 
   it('test test ie math works', function (done) {
@@ -49,6 +54,11 @@ describe('DoctorFinder', function() {
     expect(10).toEqual(symptomTestArray.length);
     done();
   });
+
+  it('should be able to retrieve a list of all specialties', function(done) {
+    expect(393).toEqual(specialtyTestArray.length)
+    done();
+  })
   //
   // it('should let us know if there are is an errorh', function(done) {
   //   expect("error").toEqual()

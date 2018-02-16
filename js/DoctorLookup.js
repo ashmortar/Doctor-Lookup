@@ -11,10 +11,10 @@ export class DoctorFinder {
   setLatLongWithZip(zipcode) {
     let  that = this;
     let apiCall = new Promise(function(resolve, reject) {
-      console.log("api call started");
       let request = new XMLHttpRequest();
       let url = `https://maps.googleapis.com/maps/api/geocode/json?&address=${zipcode}&key=${apiKey2}`;
       console.log(url);
+      console.log("geocode api request started");
       request.onload = function() {
         if (this.status === 200) {
           resolve(request.response);
@@ -24,23 +24,21 @@ export class DoctorFinder {
       };
       request.open("GET", url, true);
       request.send();
-      console.log("api call sent");
+      console.log("geocode api requst sent");
     });
 
     apiCall.then(function(response) {
-      console.log("api call response recieved");
+      console.log("geocode response recieved");
       let body = JSON.parse(response);
       that.latitude = body.results[0].geometry.location.lat;
       that.longitude = body.results[0].geometry.location.lng;
-      console.log(that.latitude);
-      console.log(that.longitude);
     });
   }
 
 
   promiseBuilder(url) {
     return new Promise(function(resolve, reject) {
-      console.log("api call started");
+      console.log("betterdoctor api request started");
       let request = new XMLHttpRequest();
       request.onload = function() {
         if (this.status === 200) {
@@ -51,8 +49,25 @@ export class DoctorFinder {
       };
       request.open("GET", url, true);
       request.send();
-      console.log("api call sent");
+      console.log("betterdoctor api request sent");
     });
+  }
+
+  getSpecialties() {
+    let resultsArray = [];
+    let  that = this;
+    let url = `https://api.betterdoctor.com/2016-03-01/specialties?user_key=${apiKey1}`;
+    console.log(url);
+    let apiCall = that.promiseBuilder(url);
+
+    apiCall.then(function(response) {
+      console.log("specialties response recieved");
+      let body = JSON.parse(response);
+      for (let i = 0; i < body.data.length; i++) {
+        resultsArray.push(body.data[i]);
+      }
+    });
+    return resultsArray;
   }
 
   findByName(name) {
@@ -63,11 +78,10 @@ export class DoctorFinder {
     let apiCall = that.promiseBuilder(url);
 
     apiCall.then(function(response) {
-      console.log("api call response recieved");
+      console.log("find by name response recieved");
       let body = JSON.parse(response);
       for (let i = 0; i < body.data.length; i++) {
         resultsArray.push(body.data[i]);
-        console.log(body.data[i].profile.slug);
       }
     });
     return resultsArray;
@@ -81,11 +95,10 @@ export class DoctorFinder {
     let apiCall = that.promiseBuilder(url);
 
     apiCall.then(function(response) {
-      console.log("api call response recieved");
+      console.log("find by symptom response recieved");
       let body = JSON.parse(response);
       for (let i = 0; i < body.data.length; i++) {
         resultsArray.push(body.data[i]);
-        console.log(body.data[i].profile.slug);
       }
     });
     return resultsArray;
