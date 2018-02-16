@@ -1,4 +1,4 @@
-const babelify = require('babelify');
+ const babelify = require('babelify');
 const browserify = require('browserify');
 const browserSync = require('browser-sync');
 const cleanCSS = require('gulp-clean-css');
@@ -25,28 +25,28 @@ const utilities = require('gulp-util');
 const buildProduction = utilities.env.prod; // append tag '--prod' to gulp command
 
 gulp.task('jshint', () => {
-  return gulp.src(['assets/js/*.js', 'spec/*-spec.js'])
+  return gulp.src(['js/*.js', 'spec/*-spec.js'])
     .pipe(jshint())
     .pipe(jshint.reporter('default'));
 });
 
 gulp.task('concatJS', () => {
-  return gulp.src(['assets/js/*-interface.js'])
+  return gulp.src(['js/*-interface.js'])
     .pipe(concat('allConcat.js'))
     .pipe(gulp.dest('tmp'));
 });
 
 // ############################
 gulp.task('concatCSS', () => {
-    return gulp.src(['assets/css/*.css'])
+    return gulp.src(['css/*.css'])
       .pipe(concat('app.css'))  // Change to allConcat after browserify issue is solved
       .pipe(gulp.dest('tmp'));
 });
 // ############################
 
 gulp.task('images', () => {
-  gulp.src('assets/images/*')
-    .pipe(gulp.dest('build/assets/images'));
+  gulp.src('images/*')
+    .pipe(gulp.dest('build/images'));
 });
 
 gulp.task('jsBrowserify', ['concatJS'], () => {
@@ -56,40 +56,40 @@ gulp.task('jsBrowserify', ['concatJS'], () => {
     }))
     .bundle()
     .pipe(source('app.js'))
-    .pipe(gulp.dest('build/assets/js'));
+    .pipe(gulp.dest('build/js'));
 });
 
 gulp.task('cssBrowserify', ['concatCSS' , 'cleanCSS'], () => {
   return gulp.src(['tmp/*.css'])
-    .pipe(gulp.dest('build/assets/css'));
+    .pipe(gulp.dest('build/css'));
 });
 
 gulp.task('minifyJS', ['jsBrowserify'], () => {
-  return gulp.src('build/assets/js/app.js')
+  return gulp.src('build/js/app.js')
     .pipe(uglify())
-    .pipe(gulp.dest('build/assets/js'));
+    .pipe(gulp.dest('build/js'));
 });
 
 gulp.task('minifyCSS', ['cssBrowserify'], () => {
-  return gulp.src('build/assets/css/*.css')
+  return gulp.src('build/css/*.css')
     .pipe(cleanCSS({debug: true}, (details) => {
       console.log(`${details.name}: ${details.stats.originalSize}`);
       console.log(`${details.name}: ${details.stats.minifiedSize}`);
     }))
-  .pipe(gulp.dest('build/assets/css'));
+  .pipe(gulp.dest('build/css'));
 });
 
 gulp.task('minifyImages', () => {
-	gulp.src('assets/images/*')
+	gulp.src('images/*')
 		.pipe(imagemin())
-		.pipe(gulp.dest('build/assets/images'))
+		.pipe(gulp.dest('build/images'))
 });
 
 gulp.task('jsBower', () => {
   return gulp.src(lib.ext('js').files)
     .pipe(concat('vendor.min.js'))
     .pipe(uglify())
-    .pipe(gulp.dest('build/assets/js'));
+    .pipe(gulp.dest('build/js'));
 });
 
 gulp.task('cssBower', () => {
@@ -99,7 +99,7 @@ gulp.task('cssBower', () => {
       console.log(`${details.name}: ${details.stats.originalSize}`);
       console.log(`${details.name}: ${details.stats.minifiedSize}`);
     }))
-    .pipe(gulp.dest('build/assets/css'));
+    .pipe(gulp.dest('build/css'));
 });
 
 gulp.task('bower', ['jsBower', 'cssBower']);
@@ -132,8 +132,8 @@ gulp.task('serve', ['build'], () => {
     }
   });
 
-  gulp.watch(['assets/js/*.js'], ['jsBuild']); // Run jsBuild if any changes are made to any files with ext .js
-  gulp.watch(['assets/css/*.css'], ['cssBuild']); // Run cssBuild if any changes are made to any files with ext .css
+  gulp.watch(['js/*.js'], ['jsBuild']); // Run jsBuild if any changes are made to any files with ext .js
+  gulp.watch(['css/*.css'], ['cssBuild']); // Run cssBuild if any changes are made to any files with ext .css
   gulp.watch(['bower.json'], ['bowerBuild']); // Run bowerBuild if any changes are made to our bower.json file
   gulp.watch(['*.html'], ['htmlBuild']); // Run htmlBuil if any changes are made to any files with ext .html
 });
