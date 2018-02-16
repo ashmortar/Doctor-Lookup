@@ -1,0 +1,30 @@
+{
+  "name": "doctor-lookup",
+  "description": "a website where the user can enter symptoms or names and get back drs in their area from the better doctor api",
+  "main": "gulpfile.js",
+  "authors": [
+    "Aaron Ross"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "javascript",
+    "node.js",
+    "gulp",
+    "jasmine",
+    "karma",
+    "bower",
+    "epicodus"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "bootstrap": "^4.0.0",
+  }
+}
