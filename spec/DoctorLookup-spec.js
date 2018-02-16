@@ -56,9 +56,9 @@ describe('DoctorFinder', function() {
   });
 
   it('should be able to retrieve a list of all specialties', function(done) {
-    expect(393).toEqual(specialtyTestArray.length)
+    expect(393).toEqual(specialtyTestArray.length);
     done();
-  })
+  });
   //
   // it('should let us know if there are is an errorh', function(done) {
   //   expect("error").toEqual()
