@@ -7,14 +7,10 @@ export class DoctorFinder {
     this.portlandLong = -122.679;
   }
 
-  findByName(name) {
-    let resultsArray = [];
-    let  that = this;
-    let apiCall = new Promise(function(resolve, reject) {
+  promiseBuilder(url) {
+    return new Promise(function(resolve, reject) {
       console.log("api call started");
       let request = new XMLHttpRequest();
-      let url = `https://api.betterdoctor.com/2016-03-01/doctors?name=${name}&location=${that.portlandLat}%2C${that.portlandLong}%2C50&user_location=${that.portlandLat}%2C${that.portlandLong}&skip=0&limit=10&user_key=${apiKey}`;
-      console.log(url);
       request.onload = function() {
         if (this.status === 200) {
           resolve(request.response);
@@ -26,6 +22,14 @@ export class DoctorFinder {
       request.send();
       console.log("api call sent");
     });
+  }
+
+  findByName(name) {
+    let resultsArray = [];
+    let  that = this;
+    let url = `https://api.betterdoctor.com/2016-03-01/doctors?name=${name}&location=${that.portlandLat}%2C${that.portlandLong}%2C50&user_location=${that.portlandLat}%2C${that.portlandLong}&skip=0&limit=10&user_key=${apiKey}`;
+    console.log(url);
+    let apiCall = that.promiseBuilder(url);
 
     apiCall.then(function(response) {
       console.log("api call response recieved");
@@ -38,8 +42,23 @@ export class DoctorFinder {
     return resultsArray;
   }
 
+  findBySymptom(symptom) {
+    let resultsArray = [];
+    let  that = this;
+    let url = `https://api.betterdoctor.com/2016-03-01/doctors?query=${symptom}&location=${that.portlandLat}%2C${that.portlandLong}%2C50&user_location=${that.portlandLat}%2C${that.portlandLong}&skip=0&limit=10&user_key=${apiKey}`;
+    console.log(url);
+    let apiCall = that.promiseBuilder(url);
 
-
+    apiCall.then(function(response) {
+      console.log("api call response recieved");
+      let body = JSON.parse(response);
+      for (let i = 0; i < body.data.length; i++) {
+        resultsArray.push(body.data[i]);
+        console.log(body.data[i].profile.slug);
+      }
+    });
+    return resultsArray;
+  }
 }
 //----------REQUIRED-------------------------
 // A user should be able to enter a medical issue to receive a list of doctors in the Portland area that fit the search query.
