@@ -9,4 +9,4 @@
 |Code and Git documentation follow best practices (setup instructions in README, .gitignore file discluding unnecessary content from repo, detailed well-formatted commit messages, etc.) | |
 |Does the project demonstrate concepts covered this week? If prompted, are you able to discuss the flow of your code and the concepts behind it with an instructor using correct terminology? | |
 |Is the app in a presentable, portfolio-quality state? | |
-|Is required functionality in place by the Friday deadline? | |
+|Is required functionality in place by the Friday deadline? || 

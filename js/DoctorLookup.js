@@ -3,10 +3,38 @@ let apiKey = require('./../.env').apiKey;
 
 export class DoctorFinder {
   constructor() {
+    this.portlandLat = 45.523;
+    this.portlandLong = -122.679;
   }
 
   findByName(name) {
     let resultsArray = [];
+    let  that = this;
+    let apiCall = new Promise(function(resolve, reject) {
+      console.log("api call started");
+      let request = new XMLHttpRequest();
+      let url = `https://api.betterdoctor.com/2016-03-01/doctors?name=${name}&location=${that.portlandLat}%2C${that.portlandLong}%2C50&user_location=${that.portlandLat}%2C${that.portlandLong}&skip=0&limit=10&user_key=${apiKey}`;
+      console.log(url);
+      request.onload = function() {
+        if (this.status === 200) {
+          resolve(request.response);
+        } else {
+          reject(Error(request.statusText));
+        }
+      };
+      request.open("GET", url, true);
+      request.send();
+      console.log("api call sent");
+    });
+
+    apiCall.then(function(response) {
+      console.log("api call response recieved");
+      let body = JSON.parse(response);
+      for (let i = 0; i < body.data.length; i++) {
+        resultsArray.push(body.data[i]);
+        console.log(body.data[i].profile.slug);
+      }
+    });
     return resultsArray;
   }
 
