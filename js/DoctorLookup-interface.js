@@ -2,19 +2,19 @@ import {DoctorFinder} from './../js/DoctorLookup.js';
 
 $(document).ready(function(){
 
-  let finder = new DoctorFinder();
-  let results = finder.setLatLongWithZip(97204);
+  //make a default doctor finder
+  let doctorFinder = new DoctorFinder();
+  //populate the specialties menu
+  let specialties = doctorFinder.getSpecialties();
   setTimeout(function() {
-    console.log(finder.latitude);
-    console.log(finder.longitude);
-    console.log(finder.errorResponse);
+    for (let i = 0; i < specialties.length; i++) {
+      $('#specialty-dropdown').append(`<a class="dropdown-item" id="${specialties[i].uid}" href="#">${specialties[i].name}</a>`);
+    }
   }, 1000);
 
-  setInterval(function() {
-    if(finder.errorResponse != null) {
-      alert(finder.errorResponse);
-      finder.errorResponse = null;
-    }
-  }, 500);
+  //show the welcome
+  $('#welcome').show();
+  $('nameResults').hide();
+  $('symptomResults').hide();
 
 });

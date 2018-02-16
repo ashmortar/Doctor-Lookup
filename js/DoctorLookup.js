@@ -94,7 +94,7 @@ export class DoctorFinder {
 
     apiCall.catch(function(e) {
       that.errorResponse = e;
-    })
+    });
 
     apiCall.then(function(response) {
       console.log("find by name response recieved");
@@ -124,11 +124,10 @@ export class DoctorFinder {
   }
 }
 //----------REQUIRED-------------------------
-// If the API call results in an error (any message not a 200 OK), the application should return a notification that states what the error is.
 // If the query response doesn't include any doctors (for instance, if no doctors meet the search criteria), the application should return a notification that states that no doctors meet the criteria. (This is not an error so it should be handled separately from any errors.)
 //-----------FURTHER EXPLORATION------------------
 
-// Add an additional API call to retrieve the list of specialities from the database before you query for a doctor, then return that list in a dropdown menu.
+
 // Create a list of "recently viewed" doctors and display it.
 // Create a list of "related doctors" and display it. You can define related however you wish.
 // Add static pages, links to your GitHub, social media, and more.

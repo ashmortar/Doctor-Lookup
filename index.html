@@ -2,13 +2,68 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="build/css/vendor.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="build/js/vendor.min.js"></script>
-    <script type="text/javascript" src="build/js/app.js"></script>
-    <title></title>
+    <link rel="stylesheet" href="/build/css/vendor.min.css">
+    <link rel="stylesheet" href="/build/css/app.css">
+    <script src="/build/js/vendor.min.js"></script>
+    <script src="build/js/app.js"></script>
+    <title>Doctor Finder</title>
   </head>
   <body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="#">Doctor Finder</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-  </body>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#" id="home">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="set-location">Set Location</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Search by Specialty
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="specialty-dropdown">
+              <a class="dropdown-item" >Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="search by dr name" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">find</button>
+        </form>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="search by symptom" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">find</button>
+        </form>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="welcome">
+        <h1>The Doctor Finder</h1>
+        <p>Easily find providers near you!</p>
+        <p>By default searches will be for the Portland, Oregon area.  To change your location please press set location above</p>
+        <p>To search for providers by name enter a name into the form above <small>e.g. <em><strong>Dave Smith</strong></em> or <em><strong>Smith</strong></em></small></p>
+        <p><strong>Feeling sick?</strong> type your symptom or sypmtoms into the form above <small>e.g. <em><strong>abdominal pain</strong></em> or <em><strong>cough, fever, headache</strong></em></small></p>
+      </div>
+
+      <div class="nameResults">
+
+      </div>
+      <div class="symptomResults">
+
+      </div>
+
+    </div>
+
+
+
 </html>

@@ -1,0 +1,10 @@
+.welcome {
+  color: black;
+  padding: 50px;
+  margin: 10%;
+  background-color: lightgray;
+}
+
+.welcome h1 {
+  border-bottom: 1px solid black;
+}
