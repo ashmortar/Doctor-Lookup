@@ -1,27 +1,31 @@
 import {DoctorFinder} from './../js/DoctorLookup.js';
-import {apiKey} from './../.env';
+
 
 
 describe('DoctorFinder', function() {
-  let testFinder = new DoctorFinder("97204");
-  let nameTestArray = testFinder.findByName("david smith");
+  let testFinder = new DoctorFinder();
+  testFinder.setLatLongWithZip(97204);
+  let nameTestArray;
   let symptomTestArray;
   let errorNameTest;
   let errorSymptomTest;
   setTimeout(function() {
+    nameTestArray = testFinder.findByName("david smith");
+  }, 1000);
+  setTimeout(function() {
     symptomTestArray = testFinder.findBySymptom("abdominal pain");
-  }, 1000);
-  setTimeout(function() {
-    errorNameTest = testFinder.findByName("&*)980(*^&)");
-  }, 1000);
-  setTimeout(function() {
-    errorSymptomTest = testFinder.findBySymptom("2309489oiwo-[]");
-  }, 1000);
+  }, 2000);
+  // setTimeout(function() {
+  //   errorNameTest = testFinder.findByName("&*)980(*^&)");
+  // }, 1000);
+  // setTimeout(function() {
+  //   errorSymptomTest = testFinder.findBySymptom("2309489oiwo-[]");
+  // }, 1000);
 
   beforeEach(function(done) {
     setTimeout(function() {
       done();
-    }, 2000);
+    }, 1000);
   });
   afterEach(function() {});
 
@@ -45,8 +49,8 @@ describe('DoctorFinder', function() {
     expect(10).toEqual(symptomTestArray.length);
     done();
   });
-
-  it('should let us know if there are is an errorh', function(done) {
-    expect("error").toEqual()
-  })
+  //
+  // it('should let us know if there are is an errorh', function(done) {
+  //   expect("error").toEqual()
+  // })
 });
