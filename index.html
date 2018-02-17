@@ -28,31 +28,28 @@
               Search by Specialty
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="specialty-dropdown">
-              <a class="dropdown-item" >Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
             </div>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="search by dr name" aria-label="Search">
+        <form class="form-inline my-2 my-lg-0" id='name-search'>
+          <input class="form-control mr-sm-2" id="name" type="text" placeholder="search by dr name" aria-label="name">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">find</button>
         </form>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="search by symptom" aria-label="Search">
+        <form class="form-inline my-2 my-lg-0" id='symptom-search'>
+          <input class="form-control mr-sm-2" id="symptoms" type="text" placeholder="search by symptom" aria-label="symptoms">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">find</button>
         </form>
       </div>
     </nav>
 
     <div class="container">
-      <div class="welcome">
+      <div class="welcome content-panel">
         <h1>The Doctor Finder</h1>
         <p>Easily find providers near you!</p>
         <p>By default searches will be for the Portland, Oregon area.  To change your location please press set location above</p>
         <p>To search for providers by name enter a name into the form above <small>e.g. <em><strong>Dave Smith</strong></em> or <em><strong>Smith</strong></em></small></p>
         <p><strong>Feeling sick?</strong> type your symptom or sypmtoms into the form above <small>e.g. <em><strong>abdominal pain</strong></em> or <em><strong>cough, fever, headache</strong></em></small></p>
+        <p>In future versions you will be able to search for doctors by specialty via the dropdown menu above.  For now you can still see the availabel specialties</p>
       </div>
 
       <div class="nameResults">
@@ -60,6 +57,22 @@
       </div>
       <div class="symptomResults">
 
+      </div>
+      <div class="specialtyResults">
+
+      </div>
+      <div class="submittedResults content-panel">
+        <h3>input recieved</h3>
+      </div>
+      <div class="location content-panel">
+        <form id="location">
+          <div class="form-contro">
+            <label for="zipcode">Enter your postal code</label>
+            <input type="text" name="zipcode" id="zipcode" value="97204">
+          </div>
+          <br>
+          <button type="submit" class="btn btn-info btn-lg"name="button">update zipcode</button>
+        </form>
       </div>
 
     </div>

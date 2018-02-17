@@ -39,7 +39,7 @@ export class DoctorFinder {
     apiCall.then(function(response) {
       console.log("geocode response recieved");
       let body = JSON.parse(response);
-      resultsArray.push(body.results[0].geometry.location.lat);
+      resultsArray.push(body.results[0].formatted_address);
       that.latitude = body.results[0].geometry.location.lat;
       that.longitude = body.results[0].geometry.location.lng;
     });

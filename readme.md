@@ -1,12 +1,39 @@
-| Objective | Complete |
-|----------:|:---------|
-|Does the application correctly make an API call? | |
-|Does the application correctly parse data from the API response? | |
-|Does the application handle errors when the API call doesn't return a 200 OK status as well as return a message if the API returns no results? | |
-|Did you follow all setup instructions, including storing your API key? | |
-|Does the app separate user interface and business logic functionalities into different JavaScript files? | |
-|Does application manage dependencies with NPM and Bower and also include a gulp-based asset pipeline? | |
-|Code and Git documentation follow best practices (setup instructions in README, .gitignore file discluding unnecessary content from repo, detailed well-formatted commit messages, etc.) | |
-|Does the project demonstrate concepts covered this week? If prompted, are you able to discuss the flow of your code and the concepts behind it with an instructor using correct terminology? | |
-|Is the app in a presentable, portfolio-quality state? | |
-|Is required functionality in place by the Friday deadline? || 
+# _Doctor Finder_
+
+#### serach for providers near you
+
+##### by Aaron Ross 2/16/2018
+
+## Description
+
+Search for providers near you by name or by your symptoms
+
+## Setup
+* clone repo from github
+* Initialize NPM via  ```npm init```
+* Install npm dependencies ```npm install```
+* Initialize Bower (run ```bower init```)
+* Install bower dependencies ```bower install``` to
+* Initialize Karma (run ```karma init```)
+* View chrome based jasmine results through karma with ```npm test```
+* Run development server that will update when changes are made to css or js files with ```gulp serve```
+* View the webapp either with the development server or open ```index.html``` in your browser of choice
+
+## Known bugs
+* jasmine V3 and above can cause issues
+
+##Future Functionality
+* allow user to search by specialty, as of now the dropdown populates but does not yet execute searches
+
+## Technologies Used
+* JavaScript
+* html
+* gulp
+* jasmine
+* Karma
+
+
+### License
+*This application is provided as-is under the MIT license.*
+
+Copyright (c) **_Aaron Ross_**

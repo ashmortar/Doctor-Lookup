@@ -19,12 +19,7 @@ describe('DoctorFinder', function() {
   setTimeout(function() {
     specialtyTestArray = testFinder.getSpecialties();
   }, 2000);
-  // setTimeout(function() {
-  //   errorNameTest = testFinder.findByName("&*)980(*^&)");
-  // }, 1000);
-  // setTimeout(function() {
-  //   errorSymptomTest = testFinder.findBySymptom("2309489oiwo-[]");
-  // }, 1000);
+
 
   beforeEach(function(done) {
     setTimeout(function() {
